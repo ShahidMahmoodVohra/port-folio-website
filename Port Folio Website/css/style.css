@@ -1,39 +1,51 @@
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;1,300;1,400&family=Open+Sans:wght@300;400;600&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,600&family=Quicksand:wght@300&display=swap");
 
 :root {
-  --color-primary:#999D9E;
-  --color-grey-light-1:#faf9f9;
-  --color-grey-light-2:#f4f2f2;
-  --color-grey-light-3:#f0eeee;
-  --color-grey-light-4:#ccc;
-  --color-black-dark-1:#1C1D20;
-  --color-grey-dark-2:#777;
-  --color-grey-dark-3:#999;
-
+  --color-primary: #999d9e;
+  --color-grey-light-1: #faf9f9;
+  --color-grey-light-2: #f4f2f2;
+  --color-grey-light-3: #f0eeee;
+  --color-grey-light-4: #ccc;
+  --color-black-dark-1: #1c1d20;
+  --color-grey-dark-2: #777;
+  --color-grey-dark-3: #999;
 }
 
 *,
 *::before,
 *::after {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-	font-size: 62.5%;
+  font-size: 62.5%;
 }
 
 .container {
-  max-width: 120rem;
-  min-height: 50vh;
+  width: 120rem;
+  height: 100vh;
+}
+html.has-scroll-smooth {
+  overflow: hidden;
+}
+.no-scroll-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 900;
+  display: none;
 }
 
 body {
-	font-family: 'Poppins', sans-serif;
-	font-size: 1.6rem;
-	color: #ffffff;
-	background-color: var(--color-primary);
+  font-family: "Poppins", sans-serif;
+  font-size: 1.6rem;
+  color: #ffffff;
+  background-color: var(--color-primary);
 }
 .cursor {
   position: fixed;
@@ -48,6 +60,14 @@ body {
   pointer-events: none;
   z-index: 1000;
 }
+.cursor-scale {
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.cursor-scale:hover {
+  transform: scale(1.05);
+}
 
 .grow,
 .grow-small {
@@ -61,182 +81,165 @@ body {
   transform: scale(2.5);
 }
 
-/* header {
-	background-color: var(--color-grey-dark-1)
-} */
-
 .navbar {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding-block: 1rem;
   max-width: 131rem;
-	margin-inline: auto;
-	padding-inline: 2.5rem;
+  margin-inline: auto;
+  padding-inline: 2.5rem;
   margin-right: -13rem;
 }
 .nav-list {
-	position: relative;
-	display: flex;
-	list-style: none;
+  position: relative;
+  display: flex;
+  list-style: none;
 }
 .nav-item {
-	width: 10rem;
-	text-align: center;
-	padding-block: 1rem;
+  width: 10rem;
+  text-align: center;
+  padding-block: 1rem;
   transform: rotate(0.001deg);
-
 }
 .nav-link {
-	text-transform: uppercase;
-  
+  text-transform: uppercase;
 }
 a {
-	text-decoration: none;
-    color: inherit;
-    /* color: #4B4C4E; */
+  text-decoration: none;
+  color: inherit;
+  /* color: #4B4C4E; */
 }
 
-
 .active {
-	position: absolute;
-	bottom: -1rem;
-	height: 5px;
-	width: .5rem;
-	background-color: #fff;
-	transition: transform 0.25s;
+  position: absolute;
+  bottom: -1rem;
+  height: 5px;
+  width: 0.5rem;
+  background-color: #fff;
+  transition: transform 0.25s;
   margin-left: 45px;
   border-radius: 50px;
   padding: 5px;
 }
 .nav-item:nth-child(2):hover ~ .active {
-	transform: translateX(10rem);
-    
+  transform: translateX(10rem);
 }
 .nav-item:nth-child(3):hover ~ .active {
-	transform: translateX(20rem);
+  transform: translateX(20rem);
 }
 .nav-item:nth-child(4):hover ~ .active {
-	transform: translateX(30rem);
+  transform: translateX(30rem);
 }
-.logo-main{
+.logo-main {
   position: relative;
   top: 15px;
-  right: 30px;
+  right: 1rem;
 }
-.logo-main img{
+.logo-main img {
   height: 8rem;
   width: 8rem;
   border-radius: 50px;
+}
 
-}
-.left-section{
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    display: inline-block;
-    background-color: var(--color-black-dark-1);
-    padding: 2.2rem 6rem;
-    border-radius: 0 65px 65px 0;
-    animation: left 3s linear;
-    animation-fill-mode: forwards;
-}
-.left-section p {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    line-height: 1.2;
-}
-.left-section p span{
-    display: block;
-    font-size: 16px;
-    font-weight: 400;
-    margin: 0 0 0 -35px;
-}
-.left-section a{
- margin-left: 5rem
-} 
- .logo-globe{
-    display: block;
-    font-size: 40px;
-    width: 100%;
-    height: 100%;
-    fill: #fff;
-    animation: globe 3s ease;
-    animation-iteration-count: infinite;
-} 
-
-@keyframes globe {
-    
-  0% 
-    {
-      transform: rotateX(0deg);
-    }
-  
-  100% 
-    {
-      transform: rotateX(360deg);    
-    }
-}
-.outer-circle {
-    position: absolute;
-    content: "";
-    top: 13px;
-    right: 51px;
-    background: var(--color-primary);
-    border-radius: 30px;
-    padding: 29px;
-
-}
-.text-dev{
+.left-section {
   position: absolute;
   left: 0;
-  top: 22%;
+  top: 70%;
+  transform: translateY(-50%);
   display: inline-block;
   background-color: var(--color-black-dark-1);
-  padding: 3rem 1.8rem;
+  padding: 2rem 6rem;
   border-radius: 0 65px 65px 0;
-  animation: slideLeft 3s linear ;
+  animation: left 3s linear;
+  animation-fill-mode: forwards;
 }
-.text-dev p span{
+.left-section p {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  line-height: 1.2;
+}
+.left-section p span {
+  display: block;
+  font-size: 14px;
+  font-weight: 300;
+  margin: 0 0 0 -35px;
+}
+.left-section a {
+  margin-left: 5rem;
+}
+.logo-globe {
+  display: block;
+  font-size: 40px;
+  width: 100%;
+  height: 100%;
+  fill: #fff;
+  animation: globe 3s ease;
+  animation-iteration-count: infinite;
+}
+
+@keyframes globe {
+  0% {
+    transform: rotateX(0deg);
+  }
+
+  100% {
+    transform: rotateX(360deg);
+  }
+}
+.text-dev {
+  position: absolute;
+  left: 0;
+  top: 25%;
+  display: inline-block;
+  background-color: var(--color-black-dark-1);
+  padding: 3.5rem 1.8rem;
+  border-radius: 0 65px 65px 0;
+  animation: slideLeft 3s linear;
+}
+.text-dev p span {
   font-size: 18px;
-  color:#fff;
-} 
+  color: #fff;
+}
+.outer-circle {
+  position: absolute;
+  content: "";
+  top: 22px;
+  right: 51px;
+  background: var(--color-primary);
+  border-radius: 30px;
+  padding: 29px;
+}
 
 @keyframes slideLeft {
   0% {
-    transform: translate3d(-100%, 0, 0); }
+    transform: translate3d(-100%, 0, 0);
+  }
   100% {
-    transform: none; } 
+    transform: none;
+  }
 }
 
-.img-main{
+.img-main {
   position: absolute;
   content: "";
   top: -15rem;
-  left: 30rem;
+  left: 31rem;
 }
 
-.img-main img{
+.img-main img {
   display: block;
   width: 450px;
   height: 715px;
   border-radius: 50%;
-  transform: skew(-5deg,0deg);
+  transform: skew(-5deg, 0deg);
   object-fit: cover;
   margin: 5rem 10rem;
 }
-/* .logo-main img{
-  display: block;
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  margin-top: 1rem;
 
-} */
-  
-.right-section{
+
+.right-section {
   content: "";
   top: 30rem;
   right: 30rem;
@@ -258,7 +261,6 @@ a {
 }
 
 .word:nth-child(1) {
-
   animation-delay: -7s;
 }
 
@@ -283,17 +285,324 @@ a {
 }
 
 @keyframes switch {
-
   0%,
   5%,
   100% {
-      filter: blur(0px);
-      opacity: 1;
+    filter: blur(0px);
+    opacity: 1;
   }
 
   50%,
   80% {
-      filter: blur(180px);
-      opacity: 0;
+    filter: blur(180px);
+    opacity: 0;
+  }
+}
+
+/* Media Queries ------For big screens */
+/* @media (min-width: 1440px) {
+  .container {
+    width: 120rem;
+    height: 100vh;
+  }
+} */
+
+/* For medium screens */
+/* @media (max-width: 1024px) {
+  .container {
+    width: 90%;
+    height: auto;
+  }
+} */
+
+@media screen and (max-width: 1350px) {
+  html {
+    font-size: 80%; /* Reduce the font size for smaller screens */
+  }
+
+  .container {
+    width: 120rem; /* Make the container full width */
+    height: 100vh;
+  }
+
+  .navbar {
+    flex-wrap: wrap; /* Allow the navbar items to wrap */
+    margin-right: 21rem;
+  }
+
+  .nav-list {
+    margin-top: 1rem; /* Add some spacing between the navbar and other elements */
+  }
+
+  .text-dev {
+    text-align: center; /* Center the text on smaller screens */
+    margin-top: 9rem; /* Add some spacing between the text and other elements */
+    padding: 50px 30px;
+  }
+  .text-dev p span {
+    font-size: 21px;
+    color: #fff;
+  }
+  .left-section{
+    padding: 2rem 5rem;
+  }
+  .left-section p span{
+    font-size: 20px;
+  }
+  .outer-circle {
+    position: absolute;
+    content: "";
+    top: 23px;
+    right: 54px;
+}
+
+  .img-main {
+    display: flex;
+    justify-content: center; /* Center the image on smaller screens */
+    margin-top: 13rem; /* Add some spacing between the image and other elements */
+    margin-left: -4rem;
+  }
+
+  .img-main img {
+    width: 100%; /* Make the image full width */
+    max-width: 53rem; /* Limit the maximum size of the image */
+  }
+}
+@media (max-width: 1024px) {
+  html {
+    font-size: 55%; /* Reduce the font size for smaller screens */
+  }
+
+  .container {
+    width: 100%; /* Make the container full width */
+    padding: 2rem; /* Add some padding */
+  }
+
+  .navbar {
+    flex-wrap: wrap; /* Allow the navbar items to wrap */
+    margin-right: 21rem;
+  }
+
+  .nav-list {
+    margin-top: 1rem; /* Add some spacing between the navbar and other elements */
+  }
+
+  .text-dev {
+    text-align: center; /* Center the text on smaller screens */
+    margin-top: 15rem; /* Add some spacing between the text and other elements */
+  }
+  .text-dev p span {
+    display: flex;
+    font-size: 11px;
+    padding: 0 25px;
+    color: #fff;
+  }
+
+  .img-main {
+    display: flex;
+    justify-content: center; /* Center the image on smaller screens */
+    margin-top: 9rem; /* Add some spacing between the image and other elements */
+    margin-left: -4rem;
+  }
+
+  .img-main img {
+    width: 100%; /* Make the image full width */
+    max-width: 53rem; /* Limit the maximum size of the image */
+  }
+}
+
+/*  Styles for screens with a maximum width of 768px */
+@media screen and  (max-width: 768px) {
+  html {
+    font-size: 50%; /* Reduce the font size for smaller screens */
+  }
+
+  .container {
+    width: 100%; /* Make the container full width */
+    padding: 2rem; /* Add some padding */
+  }
+
+  .navbar {
+    flex-wrap: wrap; /* Allow the navbar items to wrap */
+    margin-right: 21rem;
+  }
+
+  .nav-list {
+    margin-top: 1rem; /* Add some spacing between the navbar and other elements */
+  }
+
+  .right-section {
+    display: none; /* Hide the left and right sections on smaller screens */
+  }
+  .left-section {
+    position: absolute;
+    left: 0;
+    top: 70%;
+    padding: 2rem 6rem;
+  }
+  .left-section p {
+    position: absolute;
+    top: 50%;
+  }
+  
+  .left-section p span {
+    display: block;
+    font-size: 14px;
+    font-weight: 300;
+    margin: 0 0 0 -35px;
+  }
+  .left-section a {
+    margin-left: 5rem;
+  }
+
+  .text-dev {
+    margin-top: 6rem; /* Add some spacing between the text and other elements */
+    padding: 5px 47px;
+  }
+  .text-dev p {
+    font-size: 2.5rem; /* Increase the font size of the text */
+  }
+  .text-dev p span {
+    font-size: 14px;
+    padding: 0 2px;
+  }
+  .text-dev {
+    position: absolute;
+    left: 0;
+    top: 25%;
+    padding: 3.5rem 1.8rem;
+  }
+  .text-dev p span {
+    font-size: 18px;
+    color: #fff;
+  }
+
+  .img-main {
+    display: flex;
+    justify-content: center; /* Center the image on smaller screens */
+    margin-top: 2rem; /* Add some spacing between the image and other elements */
+  }
+
+  .img-main img {
+    width: 100%; /* Make the image full width */
+    max-width: 53rem; /* Limit the maximum size of the image */
+  }
+
+  /* --------------------------------------------- */
+  
+
+  .left-section{
+    padding: 2rem 5rem;
+  }
+  .left-section p span{
+    font-size: 20px;
+  }
+  .outer-circle {
+    position: absolute;
+    content: "";
+    top: 23px;
+    right: 54px;
+}
+
+}
+
+/* Styles for screens with a maximum width of 480px */
+@media (max-width: 425px) {
+  html {
+    font-size: 40%; /* Reduce the font size even more for smaller screens */
+  }
+  .navbar {
+    flex-direction: column;
+    margin-left: 102px;
+  }
+
+  .nav-item {
+    margin-bottom: 1rem; /* Add some spacing between the navbar items */
+    z-index: 1;
+  }
+
+  .nav-link {
+    font-size: 2.5rem; /* Increase the font size of the navbar links */
+  }
+  .logo-main {
+    position: relative;
+    top: -2px;
+    right: 0rem;
+  }
+
+  .text-dev {
+    text-align: center; /* Center the text on smaller screens */
+    margin-top: 60rem; /* Add some spacing between the text and other elements */
+    padding: 22px 35px;
+  }
+
+  .text-dev p {
+    font-size: 3.5rem; /* Increase the font size of the text */
+  }
+  .text-dev p span {
+    font-size: 16px;
+    padding: 0px 0px;
+    color: #fff;
+}
+
+  .img-main {
+    display: flex;
+    justify-content: center; /* Center the image on smaller screens */
+    margin-top: 7rem; /* Add some spacing between the image and other elements */
+  }
+
+  .img-main img {
+    position: relative;
+    content: "";
+    top: 15rem;
+    left: 3rem;
+    width: 170%; /* Make the image full width */
+    max-width: 61rem; /* Limit the maximum size of the image */
+  }
+}
+@media screen and (max-width: 375px) {
+  .navbar {
+    flex-direction: column;
+    margin-left: 87px;
+  }
+  .logo-main {
+    position: relative;
+    top: -2px;
+    right: 2rem;
+  }
+  .img-main img {
+    position: relative;
+    content: "";
+    top: 6rem;
+    left: 2rem;
+    width: 187%;
+    max-width: 61rem;
+  }
+  .text-dev {
+    text-align: center;
+    margin-top: 55rem;
+  }
+}
+@media screen and (max-width: 320px) {
+  .navbar {
+    flex-direction: column;
+    margin-left: 44px;
+  }
+  .logo-main {
+    position: relative;
+    top: -2px;
+    right: -1rem;
+  }
+  .img-main img {
+    position: relative;
+    content: "";
+    top: 9rem;
+    left: 8rem;
+    width: 300%;
+    max-width: 61rem;
+  }
+  .text-dev {
+    text-align: center;
+    margin-top: 60rem;
   }
 }

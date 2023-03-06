@@ -1,28 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+  <html lang="en" class="has-scroll-init has-scroll-smooth has-scroll-scrolling" data-scroll-direction="vertical" style="cursor: auto; --vh:6.25px;">
+ 
+
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Port Folio Website</title>
-    <link rel="shortcut icon" type="image/png" href="img/favicon.png">
-
+    <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
-
     <link rel="stylesheet" href="./css/style.css" />
   </head>
-<body>
-  <div class="cursor"></div>
+  <body>
+    <div class="no-scroll-overlay"></div>
+    <div class="cursor"></div>
+
     <div class="container">
-      <nav class="navbar">
+      <nav class="navbar ">
         <div class="logo-main cursor-scale small">
           <img src="./img/logo-saasina-cp.jpeg" alt="logo" />
         </div>
 
         <ul class="nav-list cursor-scale small">
           <li class="nav-item">
-            <a href="#" class="nav-link">Home</a>
+            <a href="#" class="nav-link ">Home</a>
           </li>
+
           <li class="nav-item">
             <a href="./html/work.html" class="nav-link">Work</a>
           </li>
@@ -30,6 +32,7 @@
           <li class="nav-item">
             <a href="./html/about.html" class="nav-link">About</a>
           </li>
+          
           <li class="nav-item">
             <a href="./html/contact.html" class="nav-link">Contact</a>
           </li>
@@ -50,7 +53,6 @@
         <div class="logo-globe">
           <a href="#" class="fa-solid fa-globe"></a>
         </div>
-        
       </div>
 
       <div class="text-dev cursor-scale small">
@@ -63,9 +65,10 @@
 
       <div class="img-main">
         <img src="./img/user.png" alt="img shahid" />
+        
       </div>
 
-      <div class="right-section cursor-scale ">
+      <div class="right-section cursor-scale">
         <div class="word">Reality</div>
         <div class="word">Of</div>
         <div class="word">Your</div>
@@ -75,6 +78,47 @@
       </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
-    <script src="./js/script.js"></script>
-</body>
+    <script>
+      // Select the cursor and cursor-scale elements
+      var cursor = document.querySelector(".cursor"),
+        cursorScale = document.querySelectorAll(".cursor-scale"),
+        mouseX = 0,
+        mouseY = 0;
+
+      // Move the cursor element to the current mouse position using GSAP
+      gsap.to({}, 0.016, {
+        repeat: -1,
+
+        onRepeat: function () {
+          gsap.set(cursor, {
+            css: {
+              left: mouseX,
+              top: mouseY,
+            },
+          });
+        },
+      });
+
+      // Update mouseX and mouseY variables on mousemove
+      window.addEventListener("mousemove", function (e) {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+      });
+
+      // Add mouseover and mouseleave events to cursor-scale elements
+      cursorScale.forEach((link) => {
+        link.addEventListener("mouseleave", () => {
+          cursor.classList.remove("grow");
+          cursor.classList.remove("grow-small");
+        });
+        link.addEventListener("mousemove", () => {
+          cursor.classList.add("grow");
+          if (link.classList.contains("small")) {
+            cursor.classList.remove("grow");
+            cursor.classList.add("grow-small");
+          }
+        });
+      });
+    </script>
+  </body>
 </html>
